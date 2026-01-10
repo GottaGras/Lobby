@@ -1,0 +1,7 @@
+name: Lobby
+version: ${project.version}
+main: net.gottagras.Main
+api-version: 1.21
+description: Plugin Lobby permettant de proteger le spawn et d'ajouter des commandes utiles.
+author: 19HAuLit
+website: https://github.com/GottaGras/Lobby
