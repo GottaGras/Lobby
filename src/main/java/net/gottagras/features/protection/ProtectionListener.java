@@ -5,8 +5,10 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
 import net.gottagras.utils.PlayerUtils;
@@ -81,5 +83,21 @@ public class ProtectionListener implements Listener {
         Player player = event.getPlayer();
         String message = protectionManager.getLeaveMessage(player);
         event.setQuitMessage(message);
+    }
+
+    // Handle player move events
+    @EventHandler
+    public void onPlayerMoveEvent(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        player.setFoodLevel(20);
+        player.setSaturation(20);
+    }
+
+    // Handle entity damage events
+    @EventHandler
+    public void on(EntityDamageEvent event) {
+        if (event.getEntity() instanceof Player) {
+            event.setCancelled(true);
+        }
     }
 }
