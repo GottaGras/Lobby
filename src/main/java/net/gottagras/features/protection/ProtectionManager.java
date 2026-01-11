@@ -3,7 +3,7 @@ package net.gottagras.features.protection;
 import org.bukkit.entity.Player;
 
 import net.gottagras.Main;
-import net.gottagras.utils.Chat;
+import net.gottagras.utils.ChatUtils;
 
 public class ProtectionManager {
     private final Main plugin;
@@ -22,7 +22,7 @@ public class ProtectionManager {
 
     // Get the message to display when block breaking is denied
     public String getBreakBlockDeniedMessage() {
-        return new Chat(plugin).getMessage("protection.messages.deny-break");
+        return new ChatUtils(plugin).getMessage("protection.messages.deny-break");
     }
 
     // Check if a player can place blocks
@@ -35,9 +35,10 @@ public class ProtectionManager {
 
     // Get the message to display when block placing is denied
     public String getPlaceBlockDeniedMessage() {
-        return new Chat(plugin).getMessage("protection.messages.deny-place");
+        return new ChatUtils(plugin).getMessage("protection.messages.deny-place");
     }
 
+    // Check if a player can drop items
     public Boolean canDropItem(Player player) {
         if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
             return false;
@@ -45,7 +46,20 @@ public class ProtectionManager {
         return true;
     }
 
+    // Get the message to display when item dropping is denied
     public String getDropItemDeniedMessage() {
-        return new Chat(plugin).getMessage("protection.messages.deny-drop");
+        return new ChatUtils(plugin).getMessage("protection.messages.deny-drop");
+    }
+
+    // Get the join message for a player
+    public String getJoinMessage(Player player) {
+        String template = new ChatUtils(plugin).getMessage("global.join-messages.welcome");
+        return template.replace("{player}", player.getName());
+    }
+
+    // Get the leave message for a player
+    public String getLeaveMessage(Player player) {
+        String template = new ChatUtils(plugin).getMessage("global.join-messages.leave");
+        return template.replace("{player}", player.getName());
     }
 }

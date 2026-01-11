@@ -4,11 +4,11 @@ import org.bukkit.ChatColor;
 
 import net.gottagras.Main;
 
-public class Chat {
+public class ChatUtils {
 
     private Main plugin;
 
-    public Chat(Main main) {
+    public ChatUtils(Main main) {
         this.plugin = main;
     }
 

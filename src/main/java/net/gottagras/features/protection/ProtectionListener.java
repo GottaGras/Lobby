@@ -6,8 +6,12 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
+import org.bukkit.event.player.PlayerJoinEvent;
+import org.bukkit.event.player.PlayerQuitEvent;
 
-import static org.bukkit.Sound.*;
+import net.gottagras.utils.PlayerUtils;
+
+import org.bukkit.Sound;
 
 public class ProtectionListener implements Listener {
 
@@ -27,7 +31,7 @@ public class ProtectionListener implements Listener {
         if (!canBreak) {
             String message = protectionManager.getBreakBlockDeniedMessage();
             player.sendMessage(message);
-            player.playSound(player, BLOCK_ANVIL_PLACE, 1f, 1f);
+            player.playSound(player, Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
         }
         return;
     }
@@ -42,13 +46,14 @@ public class ProtectionListener implements Listener {
         if (!canPlace) {
             String message = protectionManager.getPlaceBlockDeniedMessage();
             player.sendMessage(message);
-            player.playSound(player, BLOCK_ANVIL_PLACE, 1f, 1f);
+            player.playSound(player, Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
         }
         return;
     }
 
+    // Handle item drop events
     @EventHandler
-    public void on(PlayerDropItemEvent event) {
+    public void onPlayerDropItemEvent(PlayerDropItemEvent event) {
         Player player = event.getPlayer();
         Boolean canDrop = protectionManager.canDropItem(player);
         event.setCancelled(!canDrop);
@@ -56,9 +61,25 @@ public class ProtectionListener implements Listener {
         if (!canDrop) {
             String message = protectionManager.getDropItemDeniedMessage();
             player.sendMessage(message);
-            player.playSound(player, BLOCK_ANVIL_PLACE, 1f, 1f);
+            player.playSound(player, Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
         }
         return;
     }
 
+    // Handle player join events
+    @EventHandler
+    public void onPlayerJoinEvent(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+        new PlayerUtils().resetPlayer(player);
+        String message = protectionManager.getJoinMessage(player);
+        event.setJoinMessage(message);
+    }
+
+    // Handle player quit events
+    @EventHandler
+    public void onPlayerQuitEvent(PlayerQuitEvent event) {
+        Player player = event.getPlayer();
+        String message = protectionManager.getLeaveMessage(player);
+        event.setQuitMessage(message);
+    }
 }

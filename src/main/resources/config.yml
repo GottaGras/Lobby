@@ -1,6 +1,8 @@
 global:
-  # &b (Cyan) et &6 (Or) ressortent très bien sur le fond noir du chat
   prefix: "&8[&bGotta&6Gras&8] &f"
+  join-messages:
+    welcome: "&6Bienvenue &e{player} &6sur le lobby GottaGras!"
+    leave: "&e{player} &6a quitté le lobby."
 
 protection:
   messages:
