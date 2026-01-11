@@ -8,11 +8,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
-
-import net.gottagras.utils.PlayerUtils;
 
 import org.bukkit.Sound;
 
@@ -67,23 +63,6 @@ public class ProtectionListener implements Listener {
             player.playSound(player, Sound.BLOCK_ANVIL_PLACE, 1f, 1f);
         }
         return;
-    }
-
-    // Handle player join events
-    @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent event) {
-        Player player = event.getPlayer();
-        new PlayerUtils().resetPlayer(player);
-        String message = protectionManager.getJoinMessage(player);
-        event.setJoinMessage(message);
-    }
-
-    // Handle player quit events
-    @EventHandler
-    public void onPlayerQuitEvent(PlayerQuitEvent event) {
-        Player player = event.getPlayer();
-        String message = protectionManager.getLeaveMessage(player);
-        event.setQuitMessage(message);
     }
 
     // Handle player move events

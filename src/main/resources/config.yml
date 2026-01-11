@@ -3,6 +3,13 @@ global:
   join-messages:
     welcome: "&6Bienvenue &e{player} &6sur le lobby GottaGras!"
     leave: "&e{player} &6a quitté le lobby."
+  spawn:
+    world: "world"
+    x: 0.5
+    y: 256.0
+    z: 0.5
+    yaw: 0.0
+    pitch: 0.0
 
 protection:
   messages:

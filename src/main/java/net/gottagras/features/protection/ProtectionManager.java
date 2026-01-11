@@ -52,18 +52,6 @@ public class ProtectionManager {
         return new ChatUtils(plugin).getMessage("protection.messages.deny-drop");
     }
 
-    // Get the join message for a player
-    public String getJoinMessage(Player player) {
-        String template = new ChatUtils(plugin).getMessage("global.join-messages.welcome");
-        return template.replace("{player}", player.getName());
-    }
-
-    // Get the leave message for a player
-    public String getLeaveMessage(Player player) {
-        String template = new ChatUtils(plugin).getMessage("global.join-messages.leave");
-        return template.replace("{player}", player.getName());
-    }
-
     // Check if a player can pick up items
     public Boolean canPickupItem(Player player) {
         if (player.getGameMode() != GameMode.CREATIVE) {
