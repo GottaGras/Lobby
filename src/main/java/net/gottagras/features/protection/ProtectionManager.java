@@ -3,7 +3,7 @@ package net.gottagras.features.protection;
 import org.bukkit.entity.Player;
 
 import net.gottagras.Main;
-import net.md_5.bungee.api.ChatColor;
+import net.gottagras.utils.Chat;
 
 public class ProtectionManager {
     private final Main plugin;
@@ -12,6 +12,7 @@ public class ProtectionManager {
         this.plugin = main;
     }
 
+    // Check if a player can break blocks
     public boolean canBreakBlock(Player player) {
         if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
             return false;
@@ -19,12 +20,12 @@ public class ProtectionManager {
         return true;
     }
 
+    // Get the message to display when block breaking is denied
     public String getBreakBlockDeniedMessage() {
-        String prefix = plugin.getConfig().getString("global.prefix");
-        String message = plugin.getConfig().getString("protection.messages.deny-break");
-        return ChatColor.translateAlternateColorCodes('&', prefix + message);
+        return new Chat(plugin).getMessage("protection.messages.deny-break");
     }
 
+    // Check if a player can place blocks
     public Boolean canPlaceBlock(Player player) {
         if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
             return false;
@@ -32,9 +33,8 @@ public class ProtectionManager {
         return true;
     }
 
+    // Get the message to display when block placing is denied
     public String getPlaceBlockDeniedMessage() {
-        String prefix = plugin.getConfig().getString("global.prefix");
-        String message = plugin.getConfig().getString("protection.messages.deny-place");
-        return ChatColor.translateAlternateColorCodes('&', prefix + message);
+        return new Chat(plugin).getMessage("protection.messages.deny-place");
     }
 }
