@@ -6,6 +6,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
+import org.bukkit.event.entity.EntityPickupItemEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
@@ -98,6 +99,18 @@ public class ProtectionListener implements Listener {
     public void onEntityDamageEvent(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
             event.setCancelled(true);
+        }
+    }
+
+    // Handle item pickup events
+    @EventHandler
+    public void onEntityPickupItemEvent(EntityPickupItemEvent event) {
+        if (event.getEntity() instanceof Player) {
+            Player player = (Player) event.getEntity();
+            Boolean canPickupItem = protectionManager.canPickupItem(player);
+            if (!canPickupItem) {
+                event.setCancelled(true);
+            }
         }
     }
 }

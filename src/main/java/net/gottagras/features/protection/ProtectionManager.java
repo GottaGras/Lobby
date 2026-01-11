@@ -1,5 +1,6 @@
 package net.gottagras.features.protection;
 
+import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 
 import net.gottagras.Main;
@@ -14,7 +15,7 @@ public class ProtectionManager {
 
     // Check if a player can break blocks
     public boolean canBreakBlock(Player player) {
-        if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
+        if (player.getGameMode() != GameMode.CREATIVE) {
             return false;
         }
         return true;
@@ -27,7 +28,7 @@ public class ProtectionManager {
 
     // Check if a player can place blocks
     public Boolean canPlaceBlock(Player player) {
-        if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
+        if (player.getGameMode() != GameMode.CREATIVE) {
             return false;
         }
         return true;
@@ -40,7 +41,7 @@ public class ProtectionManager {
 
     // Check if a player can drop items
     public Boolean canDropItem(Player player) {
-        if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
+        if (player.getGameMode() != GameMode.CREATIVE) {
             return false;
         }
         return true;
@@ -61,5 +62,13 @@ public class ProtectionManager {
     public String getLeaveMessage(Player player) {
         String template = new ChatUtils(plugin).getMessage("global.join-messages.leave");
         return template.replace("{player}", player.getName());
+    }
+
+    // Check if a player can pick up items
+    public Boolean canPickupItem(Player player) {
+        if (player.getGameMode() != GameMode.CREATIVE) {
+            return false;
+        }
+        return true;
     }
 }
