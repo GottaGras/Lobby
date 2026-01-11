@@ -95,7 +95,7 @@ public class ProtectionListener implements Listener {
 
     // Handle entity damage events
     @EventHandler
-    public void on(EntityDamageEvent event) {
+    public void onEntityDamageEvent(EntityDamageEvent event) {
         if (event.getEntity() instanceof Player) {
             event.setCancelled(true);
         }
