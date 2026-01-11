@@ -6,3 +6,4 @@ protection:
   messages:
     deny-break: "&6Protection &8» &eDésolé, tu ne peux pas modifier le lobby."
     deny-place: "&6Protection &8» &eLa construction est interdite ici."
+    deny-drop: "&6Protection &8» &eTu ne peux pas jeter d'objets ici."

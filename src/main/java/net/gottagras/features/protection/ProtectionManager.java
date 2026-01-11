@@ -37,4 +37,15 @@ public class ProtectionManager {
     public String getPlaceBlockDeniedMessage() {
         return new Chat(plugin).getMessage("protection.messages.deny-place");
     }
+
+    public Boolean canDropItem(Player player) {
+        if (player.getGameMode() != org.bukkit.GameMode.CREATIVE) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getDropItemDeniedMessage() {
+        return new Chat(plugin).getMessage("protection.messages.deny-drop");
+    }
 }
