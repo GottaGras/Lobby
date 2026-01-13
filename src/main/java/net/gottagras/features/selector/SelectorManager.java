@@ -60,7 +60,7 @@ public class SelectorManager {
         Inventory inventory = Bukkit.createInventory(null, 9, name);
 
         for (GameSelectorItem gameItem : gameSelectorItems) {
-            inventory.setItem(gameItem.slot, gameItem.item);
+            inventory.setItem(gameItem.getSlot(), gameItem.getItem());
         }
 
         return inventory;
