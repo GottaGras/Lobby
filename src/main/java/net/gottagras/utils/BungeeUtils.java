@@ -8,7 +8,7 @@ import com.google.common.io.ByteStreams;
 import net.gottagras.Main;
 
 public class BungeeUtils {
-    public void sendToServer(Player player, String serverName) {
+    public static void sendToServer(Player player, String serverName) {
         ByteArrayDataOutput out = ByteStreams.newDataOutput();
 
         out.writeUTF("Connect");

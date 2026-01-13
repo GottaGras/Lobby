@@ -16,13 +16,13 @@ public class GlobalManager {
 
     // Get the join message for a player
     public String getJoinMessage(Player player) {
-        String template = new ChatUtils(plugin).getMessage("global.join-messages.welcome");
+        String template = ChatUtils.getMessage("global.join-messages.welcome");
         return template.replace("{player}", player.getName());
     }
 
     // Get the leave message for a player
     public String getLeaveMessage(Player player) {
-        String template = new ChatUtils(plugin).getMessage("global.join-messages.leave");
+        String template = ChatUtils.getMessage("global.join-messages.leave");
         return template.replace("{player}", player.getName());
     }
 

@@ -7,6 +7,8 @@ import net.gottagras.Main;
 import net.gottagras.utils.ChatUtils;
 
 public class ProtectionManager {
+
+    @SuppressWarnings("unused")
     private final Main plugin;
 
     public ProtectionManager(Main main) {
@@ -23,7 +25,7 @@ public class ProtectionManager {
 
     // Get the message to display when block breaking is denied
     public String getBreakBlockDeniedMessage() {
-        return new ChatUtils(plugin).getMessage("protection.messages.deny-break");
+        return ChatUtils.getMessage("protection.messages.deny-break");
     }
 
     // Check if a player can place blocks
@@ -36,7 +38,7 @@ public class ProtectionManager {
 
     // Get the message to display when block placing is denied
     public String getPlaceBlockDeniedMessage() {
-        return new ChatUtils(plugin).getMessage("protection.messages.deny-place");
+        return ChatUtils.getMessage("protection.messages.deny-place");
     }
 
     // Check if a player can drop items
@@ -49,7 +51,7 @@ public class ProtectionManager {
 
     // Get the message to display when item dropping is denied
     public String getDropItemDeniedMessage() {
-        return new ChatUtils(plugin).getMessage("protection.messages.deny-drop");
+        return ChatUtils.getMessage("protection.messages.deny-drop");
     }
 
     // Check if a player can pick up items

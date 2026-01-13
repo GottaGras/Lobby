@@ -27,7 +27,7 @@ public class Main extends JavaPlugin {
         saveDefaultConfig();
 
         // Set world rules
-        new WorldUtils(this).setWorldRules();
+        WorldUtils.setWorldRules();
 
         // Initialize ProtectionManager and register ProtectionListener
         this.protectionManager = new ProtectionManager(this);

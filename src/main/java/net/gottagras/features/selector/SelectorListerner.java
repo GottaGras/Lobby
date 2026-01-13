@@ -54,7 +54,7 @@ public class SelectorListerner implements Listener {
 
         if (selectorManager.isGameSelectorItem(clickedItem)) {
             String server = selectorManager.getServerForItem(clickedItem);
-            new BungeeUtils().sendToServer(player, server);
+            BungeeUtils.sendToServer(player, server);
         }
     }
 }

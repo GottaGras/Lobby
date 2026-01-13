@@ -4,7 +4,7 @@ import org.bukkit.entity.Player;
 
 public class PlayerUtils {
 
-    public void resetPlayer(Player player) {
+    public static void resetPlayer(Player player) {
         player.setFoodLevel(20);
         player.setSaturation(20);
         player.setHealth(20);

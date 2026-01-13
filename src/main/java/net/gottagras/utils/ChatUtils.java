@@ -6,15 +6,9 @@ import net.gottagras.Main;
 
 public class ChatUtils {
 
-    private Main plugin;
-
-    public ChatUtils(Main main) {
-        this.plugin = main;
-    }
-
-    public String getMessage(String confPath) {
-        String prefix = plugin.getConfig().getString("global.prefix");
-        String message = plugin.getConfig().getString(confPath);
+    public static String getMessage(String confPath) {
+        String prefix = Main.getInstance().getConfig().getString("global.prefix");
+        String message = Main.getInstance().getConfig().getString(confPath);
         return ChatColor.translateAlternateColorCodes('&', prefix + message);
     }
 }

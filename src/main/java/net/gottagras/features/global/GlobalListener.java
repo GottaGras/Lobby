@@ -20,7 +20,7 @@ public class GlobalListener implements Listener {
     @EventHandler
     public void onPlayerJoinEvent(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        new PlayerUtils().resetPlayer(player);
+        PlayerUtils.resetPlayer(player);
         String message = globalManager.getJoinMessage(player);
         globalManager.teleportToSpawn(player);
         event.setJoinMessage(message);
