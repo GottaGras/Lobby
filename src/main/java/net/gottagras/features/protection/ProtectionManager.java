@@ -59,4 +59,11 @@ public class ProtectionManager {
         }
         return true;
     }
+
+    public Boolean canInteract(Player player) {
+        if (player.getGameMode() != GameMode.CREATIVE) {
+            return false;
+        }
+        return true;
+    }
 }

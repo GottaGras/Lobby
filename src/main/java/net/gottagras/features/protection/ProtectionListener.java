@@ -7,6 +7,7 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityPickupItemEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerDropItemEvent;
 import org.bukkit.event.player.PlayerMoveEvent;
 
@@ -88,6 +89,17 @@ public class ProtectionListener implements Listener {
             Player player = (Player) event.getEntity();
             Boolean canPickupItem = protectionManager.canPickupItem(player);
             if (!canPickupItem) {
+                event.setCancelled(true);
+            }
+        }
+    }
+
+    @EventHandler
+    public void onInventoryClickEvent(InventoryClickEvent event) {
+        if (event.getWhoClicked() instanceof Player) {
+            Player player = (Player) event.getWhoClicked();
+            Boolean canInteract = protectionManager.canInteract(player);
+            if (!canInteract) {
                 event.setCancelled(true);
             }
         }
