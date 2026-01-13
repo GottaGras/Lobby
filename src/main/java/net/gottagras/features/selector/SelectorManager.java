@@ -86,10 +86,9 @@ public class SelectorManager {
 
                 ItemStack gameItem = itemBuilder(gameName, gameLore, gameMaterial);
 
-                GameSelectorItem gameSelectorItem = new GameSelectorItem();
-                gameSelectorItem.item = gameItem;
-                gameSelectorItem.server = (String) gameConfig.get("server");
-                gameSelectorItem.slot = gameSlot;
+                String server = (String) gameConfig.get("server");
+
+                GameSelectorItem gameSelectorItem = new GameSelectorItem(gameItem, server, gameSlot);
 
                 gameSelectorItems.add(gameSelectorItem);
                 plugin.getLogger().info("Loaded game selector item: " + gameName);
@@ -109,7 +108,7 @@ public class SelectorManager {
     // Check if the clicked item is a game selector item
     public boolean isGameSelectorItem(ItemStack clickedItem) {
         for (GameSelectorItem selectorItem : gameSelectorItems) {
-            if (ItemUtils.isSameItem(clickedItem, selectorItem.item)) {
+            if (ItemUtils.isSameItem(clickedItem, selectorItem.getItem())) {
                 return true;
             }
         }
@@ -119,8 +118,8 @@ public class SelectorManager {
     // Get the server name for the clicked item
     public String getServerForItem(ItemStack clickedItem) {
         for (GameSelectorItem selectorItem : gameSelectorItems) {
-            if (ItemUtils.isSameItem(clickedItem, selectorItem.item)) {
-                return selectorItem.server;
+            if (ItemUtils.isSameItem(clickedItem, selectorItem.getItem())) {
+                return selectorItem.getServer();
             }
         }
         return null;
